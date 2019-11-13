@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Изучаем HTML</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <div>
+        <form>
+            <fieldset>
+                <legend>Введите параметры для задачи 1</legend>
+                <p>
+                    <label for="inpAreaT1">Площадь участка (сотка):</label>
+                    <input id="inpAreaT1" type="number" step="1">
+                </p>
+                <p>
+                    <label for="inpXT1">Длина грядки (м):</label>
+                    <input id="inpXT1" type="number" step="1">
+                </p>
+                <p>
+                    <label for="inpYT1">Высота грядки (м):</label>
+                    <input id="inpYT1" type="number" step="1">
+                </p>
+                <button onclick="task1();">Расчет</button>
+            </fieldset>
+        </form>
+    </div>
+
+
+    <div>
+        <form>
+            <fieldset>
+                <legend>Введите параметры для задачи 2</legend>
+                <p>
+                    <label for="inpAreaExtT2">Площадь внешнего овала (дм2):</label>
+                    <input id="inpAreaExtT2" type="number" step="1">
+                </p>
+                <p>
+                    <label for="inpAreaIntT2">Площадь внутреннего овала (см2):</label>
+                    <input id="inpAreaIntT2" type="number" step="1">
+                </p>
+
+                <button onclick="task2();">Расчет</button>
+            </fieldset>
+        </form>
+    </div>
+
+
+    <div>
+        <form>
+            <fieldset>
+                <legend>Введите параметры для задачи 3</legend>
+                <p>
+                    <label for="inpXT3">Число 1:</label>
+                    <input id="inpXT3" type="number" step="1">
+                </p>
+                <p>
+                    <label for="inpYT3">Число 2:</label>
+                    <input id="inpYT3" type="number" step="1">
+                </p>
+                <p>
+                    <label for="inpZT3">Число 3:</label>
+                    <input id="inpZT3" type="number" step="1">
+                </p>
+
+                <button onclick="task3();">Расчет</button>
+            </fieldset>
+        </form>
+    </div>
+
+
+    <div>
+        <form>
+            <fieldset>
+                <legend>Введите параметры для задачи 4</legend>
+                <p>
+                    <label for="inpXT4">Граница:</label>
+                    <input id="inpXT4" type="number" step="0.01">
+                </p>
+                <p>
+                    <label for="inpYT4">Число 1:</label>
+                    <input id="inpYT4" type="number" step="0.01">
+                </p>
+                <p>
+                    <label for="inpZT4">Число 2:</label>
+                    <input id="inpZT4" type="number" step="0.01">
+                </p>
+
+                <button onclick="task4();">Расчет</button>
+            </fieldset>
+        </form>
+    </div>
+
+
+    <div>
+        <form>
+            <fieldset>
+                <legend>Введите параметры для задачи 5</legend>
+
+                <fieldset>
+                    <legend>Точка 1</legend>
+                    <p>
+                        <label for="inpX1T5">X1:</label>
+                        <input id="inpX1T5" type="number" step="1">
+                    </p>
+                    <p>
+                        <label for="inpY1T5">Y1:</label>
+                        <input id="inpY1T5" type="number" step="1">
+                    </p>
+                    <p>
+                        <label for="inpZ1T5">Z1:</label>
+                        <input id="inpZ1T5" type="number" step="1">
+                    </p>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Точка 2</legend>
+                    <p>
+                        <label for="inpX2T5">X2:</label>
+                        <input id="inpX2T5" type="number" step="1">
+                    </p>
+                    <p>
+                        <label for="inpY2T5">Y2:</label>
+                        <input id="inpY2T5" type="number" step="1">
+                    </p>
+                    <p>
+                        <label for="inpZ2T5">Z2:</label>
+                        <input id="inpZ2T5" type="number" step="1">
+                    </p>
+                </fieldset>
+                <fieldset>
+                    <legend>Точка 3</legend>
+                    <p>
+                        <label for="inpX3T5">X3:</label>
+                        <input id="inpX3T5" type="number" step="1">
+                    </p>
+                    <p>
+                        <label for="inpY3T5">Y3:</label>
+                        <input id="inpY3T5" type="number" step="1">
+                    </p>
+                    <p>
+                        <label for="inpZ3T5">Z3:</label>
+                        <input id="inpZ3T5" type="number" step="1">
+                    </p>
+                </fieldset>
+
+
+
+                <button onclick="task5();">Расчет</button>
+            </fieldset>
+        </form>
+    </div>
+
+
+
+</body>
+
+</html>
