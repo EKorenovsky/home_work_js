@@ -99,7 +99,7 @@ function getDescriptionValue() {
     } else if (val < 100) {
         second_descr = "двузначное";
     } else {
-        second_descr = "трехзначеное";
+        second_descr = "трехзначное";
     }
 
     let resut = "нулевое";
