@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Изучаем HTML</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <div class="container">
+        <div class="task">
+            <form>
+                <fieldset>
+                    <legend>Введите параметры для задачи 1</legend>
+                    <p>
+                        <label for="inpIdMonth">Месяц:</label>
+                        <input id="inpIdMonth" type="number" step="1">
+                    </p>
+                    <button onclick="getSeason();">Расчет</button>
+                </fieldset>
+            </form>
+        </div>
+        <div class="task">
+            <form>
+                <fieldset>
+                    <legend>Введите параметры для задачи 2</legend>
+                    <p><label for="inpIdMeasureType">Тип ед. измерения:</label>
+                        <select id="inpIdMeasureType">
+                            <option selected value="1">дециметр</option>
+                            <option value="2">километр</option>
+                            <option value="3">метр</option>
+                            <option value="4">миллиметр</option>
+                            <option value="5">сантиметр</option>
+                            
+                        </select>
+                    </p>
+
+                    <p>
+                        <label for="inpValueTask2">Число:</label>
+                        <input id="inpValueTask2" type="number" step="1">
+                    </p>
+                    <button onclick="getInMetersValue();">Расчет</button>
+                </fieldset>
+            </form>
+        </div>
+        <div class="task">
+            <form>
+                <fieldset>
+                    <legend>Введите параметры для задачи 3</legend>
+                    <p>
+                        <label for="inpValueTask3">Число:</label>
+                        <input id="inpValueTask3" type="number" step="1" min="-999" max="999">
+                    </p>
+                    <button onclick="getDescriptionValue();">Расчет</button>
+                </fieldset>
+            </form>
+        </div>
+
+
+
+
+        <div class="task">
+            <form>
+                <fieldset>
+                    <legend>Введите параметры для задачи 4</legend>
+                    <p>
+                        <label for="inpValueTask4">Правая граница:</label>
+                        <input id="inpValueTask4" type="number" step="1">
+                    </p>
+
+                </fieldset>
+            </form>
+            <button onclick="getInfoInLog();">В консоль</button>
+        </div>
+    </div>
+</body>
+
+</html>

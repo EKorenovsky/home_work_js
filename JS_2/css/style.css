@@ -1,0 +1,22 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+.task {
+    flex: 1 1 calc(33.33% - 30px);
+    margin: 5px;
+    box-sizing: border-box;
+    min-width: 370px;
+    padding: 20px;
+    font-size: 1em;
+    text-align: left;
+    background: #b5ced8;
+}
