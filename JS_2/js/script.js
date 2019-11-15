@@ -117,10 +117,6 @@ function getInfoInLog() {
 
     for (let i = 1; i <= val; i++) {
 
-        let z1 = i % 3;
-        let z2 = i % 5;
-
-
         if (!(i % 3) && !(i % 5)) {
             console.log(`Value: ${i} Three and Five`);
         } else if ((i % 3) && !(i % 5)) {
