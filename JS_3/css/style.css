@@ -10,7 +10,7 @@ body {
 }
 
 .task {
-    flex: 1 1 calc(25%-40px);
+    flex: 1 1 calc(20%-50px);
     margin: 5px;
     box-sizing: border-box;
     padding: 20px;

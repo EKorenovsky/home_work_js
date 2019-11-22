@@ -70,3 +70,24 @@ function task4() {
     }
     alert("Счастливых билетов: " + cnt);
 }
+
+function task5() {
+    let arValues = [2, 7, 4, 1, 8, 1];
+    let res = task5_calculate(arValues);
+    alert(res);
+}
+
+function task5_calculate(arValues) {
+    if (arValues.length > 1) {
+        arValues.sort((a, b) => b - a);
+        let angl = Math.abs(arValues[0] - arValues[1]);
+        arValues.splice(0, 2);
+        if (angl > 0)
+            arValues.push(angl);
+        return task5_calculate(arValues);
+    } else if (arValues.length === 1)
+        return arValues[0];
+    else
+        return 0;
+
+}
