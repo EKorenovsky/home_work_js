@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Изучаем HTML</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <div class="container">
+        <div class="task">
+            <form>
+                <fieldset>
+                    <legend>Введите параметры для задачи 1</legend>
+                    <p>
+                        <label for="inpIdTask1">Введите число:</label>
+                        <input id="inpIdTask1" type="number">
+                    </p>
+                    <button onclick="task1();">Расчет</button>
+                </fieldset>
+            </form>
+        </div>
+        <div class="task">
+            <form>
+                <fieldset>
+                    <legend>Введите параметры для задачи 2</legend>
+                    <p>
+                        <label for="inpIdStringTask2">Строка:</label>
+                        <input id="inpIdStringTask2" type="text">
+                    </p>
+                    <p>
+                        <label for="inpIdSymbolTask2">Символ:</label>
+                        <input id="inpIdSymbolTask2" type="text" maxlength="1">
+                    </p>
+                    <button onclick="task2();">Расчет</button>
+                </fieldset>
+            </form>
+        </div>
+        <div class="task">
+            <form>
+                <fieldset>
+                    <legend>Введите параметры для задачи 3</legend>
+                    <p>
+                        <label for="inpIdPasswordTask3">Пароль:</label>
+                        <input id="inpIdPasswordTask3" type="text">
+                    </p>
+                    <button onclick="task3();">Расчет</button>
+                </fieldset>
+            </form>
+        </div>
+
+
+
+
+        <div class="task">
+            <form>
+                <fieldset>
+                    <legend>Введите параметры для задачи 4</legend>
+                    <p>
+                        <label for="inpIdStringTask4">День недели:</label>
+                        <input id="inpIdStringTask4">
+                    </p>
+                    <button onclick="task4();">Расчет</button>
+                </fieldset>
+            </form>
+
+        </div>
+    </div>
+</body>
+
+</html>
