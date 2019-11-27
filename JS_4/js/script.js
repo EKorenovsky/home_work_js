@@ -32,7 +32,7 @@ function task3() {
 
     if (/.{9,}/.test(password))
         isCheckLength = true;
-    if (/\d\D*\d\D*\d/.test(password))
+    if (/(\d\D*){3,}/.test(password))
         isCheck2Digitals = true;
     if (/[A-Z]/.test(password))
         isCheckUpperLetters = true;
