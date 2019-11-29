@@ -107,7 +107,7 @@ let objStudent = {
         for (let prop in this) {
             let val = this[prop];
             if (Array.isArray(val))
-                console.log(`${prop} : ${val.join()}`);
+                console.log(`${prop} : ${val.join(', ')}`);
             else if (!isFunction(val))
                 console.log(`${prop} : ${val}`);
         }
