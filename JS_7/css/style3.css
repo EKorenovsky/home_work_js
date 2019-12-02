@@ -11,3 +11,11 @@ body {
     align-items: center;
     justify-content: center;
 }
+
+.display-none {
+    display: none;
+}
+
+.display-yes {
+    display: inline;
+}
