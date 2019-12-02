@@ -1,0 +1,42 @@
+body {
+    font-family: 'Jomolhari', serif;
+    margin: 0;
+}
+
+.main {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.items-container {
+    margin: 50px 0px;
+    width: 900px;
+    display: grid;
+    grid-template-columns: repeat(3, 300px);
+}
+
+.items-container>div {
+    border: 1px gray solid;
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+    padding: 5px;
+    justify-content: center;
+}
+
+.items-container>div>span {
+    margin-bottom: 5px;
+}
+
+.item-name {
+    font-size: 1.5em;
+    font-style: ;
+}
+
+.item-descr {
+    font-size: 1.2em;
+}
+
+.item-price {
+    font-size: 1.2em;
+}
