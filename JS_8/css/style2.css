@@ -1,0 +1,26 @@
+body {
+    margin: 0;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16pt;
+}
+
+.container>button {
+    width: 300px;
+    height: 100px;
+    background-color: beige;
+    border: 1px solid grey;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.container>button:hover {
+    border: 2px solid black;
+}

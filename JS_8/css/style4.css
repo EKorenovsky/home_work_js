@@ -1,0 +1,46 @@
+body {
+    font-family: 'Roboto Condensed', sans-serif;
+    margin: 0;
+}
+
+.main {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.items-container {
+    margin: 50px 0px;
+    width: 900px;
+    display: grid;
+    grid-template-columns: repeat(3, 300px);
+}
+
+.items-container>div {
+    border: 1px gray solid;
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+    padding: 5px;
+    justify-content: center;
+}
+
+.items-container>div>span {
+    margin-bottom: 5px;
+}
+
+.item-code {
+    font-size: 1.5em;
+}
+
+.item-author {
+    font-size: 1.5em;
+}
+
+.item-name {
+    font-size: 1.5em;
+    color: green;
+}
+
+.item-descr {
+    font-size: 1em;
+}

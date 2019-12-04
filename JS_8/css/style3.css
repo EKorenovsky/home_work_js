@@ -1,0 +1,55 @@
+body {
+    margin: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    border: 1px black solid;
+}
+
+.messages {
+    height: 500px;
+    overflow: auto;
+    word-wrap: break-word;
+}
+
+.messages p {
+    padding: 0px;
+    margin: 5px 0px;
+}
+
+.messages p span {
+    margin: 0 3px;
+}
+
+.send-message {
+    margin: 5px;
+    text-align: right;
+}
+
+.message {
+    width: 100%;
+    margin: 5px auto;
+    display: block;
+    box-sizing: border-box;
+    border: 1px solid green;
+    resize: none;
+}
+
+.send-message>button {
+    border: 1px solid green;
+    background: white;
+    height: 40px;
+    width: 80px;
+    cursor: pointer;
+    font-size: 1.2em;
+}
+
+.send-message>button:hover {
+    background: beige;
+}
+
+.author {
+    color: green;
+}
