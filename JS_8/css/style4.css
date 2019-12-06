@@ -44,3 +44,8 @@ body {
 .item-descr {
     font-size: 1em;
 }
+
+td {
+    border: 1px solid green;
+    padding: 5px;
+}

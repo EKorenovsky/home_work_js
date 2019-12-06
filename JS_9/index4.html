@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Необходимо найти призы в количестве, равном размеру поля.</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style4.css">
+    <script src="js/myLib.js"></script>
+    <script src="js/script4.js"></script>
+</head>
+
+<body>
+    <div class="header">
+        <h3>Необходимо найти призы в количестве, равном размеру поля.</h3>
+    </div>
+    <div class="container">
+        <div class="left-side"></div>
+        <div class="right-side">
+            <div class=input-params>
+                <input id="blockSize" type="number" min="2" max="10" name="value-size">
+                <input type="button" onclick="crtGameField(blockSize.value);" value="OK">
+            </div>
+            <p data-counter="3">Осталось: 3</p>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Изучаем HTML</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.5.0/jasmine.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.5.0/jasmine.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.5.0/jasmine-html.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.5.0/boot.js"></script>
+
+
+    <!-- include source files here... -->
+    <script>
+        function calcMyUnitTest(x) {
+            if (x == 0) {
+                return NaN;
+            } else if (x < 0) {
+                return undefined;
+            } else {
+                return (1 / x + Math.sqrt(x));
+            }
+        }
+    </script>
+
+    <!-- include spec files here... -->
+    <script>
+        describe("Test calcMyUnitTest function", function() {
+            let msg = "Positiv test: x=1 result=2";
+            it(msg, function() {
+                let res = calcMyUnitTest(1);
+                expect(res).toBe(2);
+            });
+            msg = "Positiv test: x=4 result=2.25";
+            it(msg, function() {
+                let res = calcMyUnitTest(4);
+                expect(res).toBe(2.25);
+            });
+
+
+            msg = "Negative test: x=0 result=NaN";
+            it(msg, function() {
+                let res = calcMyUnitTest(0);
+                expect(res).toBeNaN();
+            });
+
+            msg = "Negative test: x=-1 result=NaN";
+            it(msg, function() {
+                let res = calcMyUnitTest(-1);
+                expect(res).toBeNaN();
+            });
+
+
+
+        });
+    </script>
+
+
+</head>
+
+
+
+
+<body>
+
+</body>
+
+</html>

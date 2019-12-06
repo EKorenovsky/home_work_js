@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Изучаем HTML</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/myLib.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+
+<body>
+    <div id="container">
+
+    </div>
+    <script>
+        let line1 = {
+            x: [],
+            y: [],
+            type: 'scatter'
+        }
+        for (let i = -5.01; i < 5; i += 0.01) {
+            line1.x.push(i);
+            line1.y.push(myLib.calcX(i));
+        }
+        Plotly.newPlot('container', [line1])
+    </script>
+</body>
+
+</html>
