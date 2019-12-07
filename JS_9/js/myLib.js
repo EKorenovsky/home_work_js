@@ -37,7 +37,89 @@
             console.log(strHtml);
             return strHtml;
         },
+        genTableWithSortingColumns: function(contId, arrFields, arrData) {
+            let domContainer = document.getElementById(contId);
+            let table = document.createElement("table");
+            let thead = document.createElement("thead");
+            let tbody = document.createElement("tbody");
 
+            function genDataRows() {
+                fieldName = this.dataset.fieldname;
+                orderDir = this.dataset.orderdir;
+
+                orderDir = (orderDir === "ASC") ? "DESC" : "ASC";
+                this.dataset.orderdir = orderDir;
+
+                if (fieldName.length > 0) {
+                    if (orderDir === "DESC") {
+                        arrData.sort((el1, el2) => {
+                            if (el1[fieldName] > el2[fieldName]) {
+                                return -1;
+                            }
+                            if (el1[fieldName] < el2[fieldName]) {
+                                return 1;
+                            }
+                            return 0;
+                        });
+                    } else {
+                        arrData.sort((el1, el2) => {
+                            if (el1[fieldName] < el2[fieldName]) {
+                                return -1;
+                            }
+                            if (el1[fieldName] > el2[fieldName]) {
+                                return 1;
+                            }
+                            return 0;
+                        });
+                    }
+                }
+                tbody.innerHTML = "";
+                for (let i = 0; i <= arrData.length; i++) {
+                    let tr = document.createElement('tr');
+                    for (let property in arrFields) {
+                        if (property) {
+                            let td = document.createElement('td');
+                            td.innerText = arrData[i][property];
+                            tr.appendChild(td);
+                        }
+                    }
+                    tbody.appendChild(tr);
+                }
+            }
+            // рисуем шапку (c псевдонимами и именами полей для сотртировки)
+            let trTh = document.createElement("tr");
+            for (let property in arrFields) {
+                let th = document.createElement("th");
+
+                let ahref = document.createElement("a");
+                ahref.setAttribute("href", "#");
+                ahref.innerText = arrFields[property];
+                ahref.dataset.fieldname = property;
+                ahref.dataset.orderdir = "";
+                ahref.addEventListener("click", genDataRows);
+                ahref.dataset.orderdir = "ASC";
+
+                th.appendChild(ahref);
+
+                trTh.appendChild(th);
+            }
+            thead.appendChild(trTh);
+
+            //Делаем первую отрисовку содержимого таблицы
+            for (let i = 0; i < arrData.length; i++) {
+                let tr = document.createElement('tr');
+                for (let property in arrFields) {
+                    let td = document.createElement('td');
+                    td.innerText = arrData[i][property];
+                    tr.appendChild(td);
+                }
+                tbody.appendChild(tr);
+            }
+
+            table.appendChild(thead);
+            table.appendChild(tbody);
+            domContainer.appendChild(table);
+        },
         pseudoRnd: function(val) {
             let min = 1;
             let max = val;

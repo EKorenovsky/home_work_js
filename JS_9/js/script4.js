@@ -17,7 +17,8 @@ function crtGameField(N) {
     for (let i = 0; i < N; i++) {
         window.arrPresents.push(pseudoRnd());
     }
-    console.log(window.arrPresents);
+
+    console.log(`Выигрышные ячейки: ${window.arrPresents}`);
 }
 
 function checkPresent(e) {
