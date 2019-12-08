@@ -37,8 +37,12 @@
             console.log(strHtml);
             return strHtml;
         },
-        genTableWithSortingColumns: function(contId, arrFields, arrData) {
-            let domContainer = document.getElementById(contId);
+        genTableWithSortingColumns: function(domContainerId, dataSet) {
+
+            let arrFields = dataSet['columns'];
+            let arrData = dataSet['data'];
+
+            let domContainer = document.getElementById(domContainerId);
             let table = document.createElement("table");
             let thead = document.createElement("thead");
             let tbody = document.createElement("tbody");
@@ -90,17 +94,13 @@
             let trTh = document.createElement("tr");
             for (let property in arrFields) {
                 let th = document.createElement("th");
-
                 let ahref = document.createElement("a");
                 ahref.setAttribute("href", "#");
                 ahref.innerText = arrFields[property];
                 ahref.dataset.fieldname = property;
-                ahref.dataset.orderdir = "";
-                ahref.addEventListener("click", genDataRows);
                 ahref.dataset.orderdir = "ASC";
-
+                ahref.addEventListener("click", genDataRows);
                 th.appendChild(ahref);
-
                 trTh.appendChild(th);
             }
             thead.appendChild(trTh);
@@ -115,7 +115,6 @@
                 }
                 tbody.appendChild(tr);
             }
-
             table.appendChild(thead);
             table.appendChild(tbody);
             domContainer.appendChild(table);

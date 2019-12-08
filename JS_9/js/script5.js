@@ -34,4 +34,9 @@ let columns = {
     descr: 'Описание'
 };
 
-myLib.genTableWithSortingColumns("tableBooks", columns, data);
+let dataSet = {
+    "columns": columns,
+    "data": data
+}
+
+myLib.genTableWithSortingColumns("tableBooks", dataSet);
