@@ -16,7 +16,17 @@ class Student extends Man {
         super(name, age, gender, interests);
         this.institute = institute;
     }
-    toString = () => (`Имя: ${this.name} Возраст: ${this.age} Пол: ${this.gender} Интересы: ${this.interests.toString()}. Обучается в ${this.institute}`);
+    toString23 = () => {
+        let a = super.toString();
+        return a + ` Обучается в ${this.institute}`;
+    };
+
+    toString() {
+        let a = super.toString();
+        return a + ` Обучается в ${this.institute}`;
+    };
+
+
 }
 
 
