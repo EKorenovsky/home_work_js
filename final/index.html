@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Курсовая работа по JS</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        canvas {
+            background: #eee;
+            display: block;
+            margin: 100px auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <audio id="myAudio">
+  <source src="bouncingBall.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+    <canvas id="myCanvas" width="640" height="480"></canvas>
+
+    <script>
+        let globalTimer;
+        let canvas = document.getElementById("myCanvas");
+        let sounder = document.getElementById("myAudio");
+
+        function randomInteger(min, max) {
+            let rand = min - 0.5 + Math.random() * (max - min + 1);
+            return Math.round(rand);
+        }
+
+        function sound() {
+            sounder.play();
+        }
+
+        class Paddle {
+            constructor(canvas, paddleWidth, paddleHeight, speedMove) {
+                this.speedMove = speedMove;
+                this.canvas = canvas;
+                this.paddleWidth = paddleWidth;
+                this.paddleHeight = paddleHeight;
+                this.paddleX = (this.canvas.width - this.paddleWidth) / 2;
+                this.rightPressed = false;
+                this.leftPressed = false;
+                this.draw();
+            }
+
+            draw() {
+                let ctx = this.canvas.getContext("2d");
+                ctx.beginPath();
+                ctx.rect(this.paddleX, this.canvas.height - this.paddleHeight, this.paddleWidth, this.paddleHeight);
+                ctx.fillStyle = "#0095DD";
+                ctx.fill();
+                ctx.closePath();
+
+                if (this.rightPressed && this.paddleX < this.canvas.width - this.paddleWidth) {
+                    this.paddleX += this.speedMove;
+                } else if (this.leftPressed && this.paddleX > 0) {
+                    this.paddleX -= this.speedMove;
+                }
+            }
+
+            keyDownHandler(e) {
+                if (e.keyCode == 39) {
+                    this.rightPressed = true;
+                } else if (e.keyCode == 37) {
+                    this.leftPressed = true;
+                }
+            }
+
+            keyUpHandler(e) {
+                if (e.keyCode == 39) {
+                    this.rightPressed = false;
+                } else if (e.keyCode == 37) {
+                    this.leftPressed = false;
+                }
+            }
+        }
+
+        class Ball {
+            constructor(canvas, radius, x, y, dx, dy, paddle) {
+                this.canvas = canvas;
+                this.ballRadius = radius;
+                this.x = x;
+                this.y = y;
+                this.dx = dx;
+                this.dy = dy;
+                this.paddle = paddle;
+                this.stop = false;
+                this.draw();
+
+            }
+
+            soundCheck() {
+                setTimeout(sound, 1);
+            }
+
+            draw() {
+                let ctx = this.canvas.getContext("2d");
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.ballRadius, 0, Math.PI * 2);
+                ctx.fillStyle = "#0095DD";
+                ctx.fill();
+                ctx.closePath();
+
+
+                if (this.x + this.dx > this.canvas.width - this.ballRadius || this.x + this.dx < this.ballRadius) {
+                    this.dx = -this.dx;
+                    this.soundCheck();
+                }
+
+                if (this.y + this.dy < this.ballRadius) {
+                    this.dy = -this.dy;
+                    this.soundCheck();
+                } else if (this.y + this.dy >= this.canvas.height - this.ballRadius - (this.paddle.paddleHeight - 1)) {
+                    if (this.x > this.paddle.paddleX && this.x < this.paddle.paddleX + this.paddle.paddleWidth) {
+                        this.dy = -this.dy;
+                        this.soundCheck();
+                    } else {
+                        if (this.y > this.canvas.height - this.ballRadius) {
+                            this.stop = true;
+                        }
+                    }
+                }
+
+                this.x += this.dx;
+                this.y += this.dy;
+
+
+            }
+
+        }
+
+        class Brick {
+            constructor(canvas, ball, column, row) {
+                this.canvas = canvas;
+                this.ball = ball;
+                this.brickWidth = 75;
+                this.brickHeight = 20;
+                this.brickPadding = 10;
+                this.brickOffsetTop = 30;
+                this.brickOffsetLeft = 30;
+                this.lifeCounter = randomInteger(1, 3);
+                this.x = (column * (this.brickWidth + this.brickPadding)) + this.brickOffsetLeft;
+                this.y = (row * (this.brickHeight + this.brickPadding)) + this.brickOffsetTop;
+            }
+            draw() {
+                if (this.lifeCounter > 0) {
+
+                    //рисуем кирпич
+                    let ctx = this.canvas.getContext("2d");
+                    ctx.beginPath();
+                    ctx.rect(this.x, this.y, this.brickWidth, this.brickHeight);
+                    switch (this.lifeCounter) {
+                        case (3):
+                            ctx.fillStyle = "#ff0000";
+                            break;
+                        case (2):
+                            ctx.fillStyle = "#00ff00";
+                            break;
+                        case (1):
+                            ctx.fillStyle = "#0000ff";
+                            break;
+                    };
+                    ctx.fill();
+                    ctx.closePath();
+
+                    //проверяем столкновение
+                    if ((ball.x + ball.ballRadius) > this.x && (ball.x - ball.ballRadius) < this.x + this.brickWidth && (ball.y + ball.ballRadius) > this.y && (ball.y - ball.ballRadius < this.y + this.brickHeight)) {
+                        ball.dy = -ball.dy;
+                        this.lifeCounter -= 1;
+                        ball.soundCheck();
+                    }
+
+                }
+            }
+
+        }
+
+        class Observer {
+            constructor(canvas, paddle, ball, rowsBricks, columnsBricks) {
+                this.canvas = canvas;
+                this.paddle = paddle;
+                this.ball = ball;
+                this.bricks = [];
+                for (let c = 0; c < columnsBricks; c++) {
+                    this.bricks[c] = [];
+                    for (let r = 0; r < rowsBricks; r++) {
+                        this.bricks[c][r] = new Brick(canvas, ball, c, r);
+                    }
+                }
+
+
+            }
+
+            draw() {
+                let ctx = this.canvas.getContext("2d");
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                this.paddle.draw();
+                this.ball.draw();
+                this.bricks.forEach(bricksRow => bricksRow.forEach(brick => brick.draw()));
+
+                if (this.ball.stop) {
+                    clearTimeout(globalTimer);
+                    alert("ИГРА ОКОНЧЕНА!");
+                    document.location.reload();
+                }
+
+            }
+
+
+        }
+
+
+        let paddleHeight = 10;
+        let paddleWidth = 100;
+        let speedMove = 7;
+        let paddle = new Paddle(canvas, paddleWidth, paddleHeight, speedMove);
+        document.addEventListener("keydown", paddle.keyDownHandler.bind(paddle), false);
+        document.addEventListener("keyup", paddle.keyUpHandler.bind(paddle), false);
+
+
+
+        let radius = 10;
+        let x = canvas.width / 2;
+        let y = canvas.height - 20;
+        let dx = 2;
+        let dy = -2;
+        let ball = new Ball(canvas, radius, x, y, dx, dy, paddle);
+
+
+        let brickColumnCount = 7;
+        let brickRowCount = 4;
+        observer = new Observer(canvas, paddle, ball, brickRowCount, brickColumnCount);
+
+
+        function draw() {
+            observer.draw();
+        }
+
+        globalTimer = setInterval(draw, 15);
+    </script>
+
+</body>
+
+</html>
