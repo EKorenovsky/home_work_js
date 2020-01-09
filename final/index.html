@@ -241,13 +241,7 @@
         let brickColumnCount = 7;
         let brickRowCount = 4;
         observer = new Observer(canvas, paddle, ball, brickRowCount, brickColumnCount);
-
-
-        function draw() {
-            observer.draw();
-        }
-
-        globalTimer = setInterval(draw, 15);
+        globalTimer = setInterval(observer.draw.bind(observer), 10);
     </script>
 
 </body>
